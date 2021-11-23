@@ -23,7 +23,8 @@ class TaskModel:
 
     def set_completion(self, progress: int):
         self.completion = progress
-        self.parent.update_progress_based_on_subtasks()
+        if self.parent:
+            self.parent.update_progress_based_on_subtasks()
         self.notify_progress_change()
 
     def update_progress_based_on_subtasks(self):
