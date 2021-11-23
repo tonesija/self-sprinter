@@ -22,9 +22,9 @@ class DateSelectorGUI(tk.Frame):
             command=lambda: self.change_selected_date(1),
         )
 
-        self.date_label.pack()
-        self.left_btn.pack()
-        self.right_btn.pack()
+        self.date_label.grid(row=1, column=2)
+        self.left_btn.grid(row=1, column=1)
+        self.right_btn.grid(row=1, column=3)
 
         self.date_change_listeners = []
         self.notify_date_changed()

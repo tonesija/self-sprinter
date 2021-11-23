@@ -10,21 +10,24 @@ from gui.task import TaskGUI
 
 root = tk.Tk()
 
+Base.metadata.create_all(bind=engine)
+
+
 date_selector = DateSelectorGUI(root)
 
-add_btn = tk.Button(root, text="New", command=lambda: print("heey"))
 
 with get_db() as db:
-    db.add(Task(title="Test..."))
-    db.add(Task(title="Test 2"))
-    db.commit()
+    # db.add(Task(title="Test..."))
+    # db.add(Task(title="Test 2"))
+    # db.commit()
     tasks = db.query(Task).all()
     my_tasks = MultipleTasksGUI(root, tasks)
 
 date_selector.pack()
 my_tasks.pack()
+
+add_btn = tk.Button(root, text="New", command=lambda: my_tasks.add_new_task())
 add_btn.pack()
 
-Base.metadata.create_all(bind=engine)
 
 root.mainloop()
