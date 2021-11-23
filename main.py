@@ -9,6 +9,7 @@ from models.task_model import TaskModel
 # --- Creates GUI and initializes database ---
 
 root = tk.Tk()
+root.geometry("640x480")
 
 Base.metadata.create_all(bind=engine)
 
@@ -20,6 +21,7 @@ tasks = [TaskModel(), TaskModel()]
 my_tasks = MultipleTasksGUI(root, tasks)
 
 date_selector.pack()
+my_tasks.pack_propagate(0)
 my_tasks.pack()
 
 add_btn = tk.Button(root, text="New", command=lambda: my_tasks.add_new_task())

@@ -12,9 +12,9 @@ class MultipleTasksGUI(tk.Frame):
 
         self.tasks = [TaskGUI(self, task) for task in tasks]
         for task in self.tasks:
-            task.pack()
+            task.grid(row=len(self.grid_slaves()) + 1, column=1)
 
     def add_new_task(self):
         new_task_gui = TaskGUI(self, TaskModel())
         self.tasks.append(new_task_gui)
-        new_task_gui.pack()
+        new_task_gui.grid(row=len(self.grid_slaves()) + 1, column=1)

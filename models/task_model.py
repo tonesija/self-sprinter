@@ -29,6 +29,8 @@ class TaskModel:
 
     def update_progress_based_on_subtasks(self):
         new_progress = 0
+        if len(self.subtasks) == 0:
+            return
         for subtask in self.subtasks:
             new_progress += subtask.completion
         self.completion = new_progress // len(self.subtasks)
