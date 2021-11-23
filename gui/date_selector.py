@@ -20,6 +20,7 @@ class DateSelectorGUI(tk.Frame):
             self,
             text="Next",
             command=lambda: self.change_selected_date(1),
+            state=tk.DISABLED,
         )
 
         self.date_label.grid(row=1, column=2)
@@ -33,8 +34,14 @@ class DateSelectorGUI(tk.Frame):
         selected_date = datetime.datetime.strptime(
             self.date_label["text"], "%Y-%m-%d"
         ).date()
+
         new_date = selected_date + datetime.timedelta(days=for_days)
         self.date_label.config(text=new_date)
+
+        if new_date == date.today():
+            self.right_btn.config(state=tk.DISABLED)
+        else:
+            self.right_btn.config(state=tk.ACTIVE)
 
         self.notify_date_changed()
 
