@@ -1,12 +1,13 @@
-import tkinter as tk
+from tkinter import ttk
 
 import datetime
 from datetime import date
+from tkinter.constants import ACTIVE, DISABLED
 
 from gui.listeners import DateChangeListener
 
 
-class DateSelectorGUI(tk.Frame):
+class DateSelectorGUI(ttk.Frame):
     """GUI element that consists of a selected date label and buttons
     to change the selected date."""
 
@@ -19,17 +20,17 @@ class DateSelectorGUI(tk.Frame):
 
         super().__init__(parent)
 
-        self.date_label = tk.Label(self, text=date.today())
-        self.left_btn = tk.Button(
+        self.date_label = ttk.Label(self, text=date.today())
+        self.left_btn = ttk.Button(
             self,
             text="<<",
             command=lambda: self.change_selected_date(-1),
         )
-        self.right_btn = tk.Button(
+        self.right_btn = ttk.Button(
             self,
             text=">>",
             command=lambda: self.change_selected_date(1),
-            state=tk.DISABLED,
+            state=DISABLED,
         )
 
         self.date_label.grid(row=1, column=2)
@@ -55,9 +56,9 @@ class DateSelectorGUI(tk.Frame):
         self.date_label.config(text=new_date)
 
         if new_date == date.today():
-            self.right_btn.config(state=tk.DISABLED)
+            self.right_btn.config(state=DISABLED)
         else:
-            self.right_btn.config(state=tk.ACTIVE)
+            self.right_btn.config(state=ACTIVE)
 
         self.notify_date_changed()
 

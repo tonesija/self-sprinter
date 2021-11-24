@@ -1,12 +1,11 @@
-import tkinter as tk
+from tkinter import ttk
 from typing import List
-from db.db import get_db
 
 from gui.task import TaskGUI
 from models.task_model import TaskModel
 
 
-class MultipleTasksGUI(tk.Frame):
+class MultipleTasksGUI(ttk.Frame):
     def __init__(self, parent, tasks: List[TaskModel]):
         super().__init__(parent)
 
