@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter.constants import BOTH
 from ttkthemes import ThemedStyle
 from gui.date_selector import DateSelectorGUI
 
@@ -28,8 +29,7 @@ tasks = [TaskModel(), TaskModel()]
 my_tasks = MultipleTasksGUI(root, tasks)
 
 date_selector.pack()
-my_tasks.pack_propagate(0)
-my_tasks.pack()
+my_tasks.pack(fill=BOTH)
 
 add_btn = ttk.Button(root, text="New", command=lambda: my_tasks.add_new_task())
 add_btn.pack(side="bottom")
